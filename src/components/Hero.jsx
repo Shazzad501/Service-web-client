@@ -44,7 +44,7 @@ const Hero = () => {
           <div key={index} className="flex items-center justify-center">
             <div className="flex flex-col md:flex-row items-center gap-5 bg-white rounded-lg shadow-md p-6">
               <div className="w-full md:w-1/2 text-center md:text-left">
-              <h2 className='font-extrabold text-4xl text-purple-800'>Explore Our All Service</h2>
+              <h2 className='font-extrabold text-4xl text-purple-800'>Explore Our All Service...</h2>
                 <h3 className="text-3xl font-extrabold mb-2 text-black">
                 <Typewriter
                 words={[

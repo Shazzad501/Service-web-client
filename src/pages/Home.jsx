@@ -1,12 +1,14 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import About from '../components/About';
+import FeaturedService from '../components/FeaturedService';
 
 const Home = () => {
   return (
     <div>
-      <Hero></Hero>
-      <About></About>
+      <Hero/>
+      <About/>
+      <FeaturedService/>
     </div>
   );
 };

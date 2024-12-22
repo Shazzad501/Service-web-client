@@ -22,20 +22,20 @@ const Navbar = () => {
      <li><NavLink  
      className={({ isActive }) =>
               `hover:bg-transparent hover:border-b-2 bg-transparent font-bold text-base ${
-                isActive ? 'text-yellow-500' : ''
+                isActive ? 'text-purple-800' : ''
               }`}
       to='/'>Home</NavLink></li>     
      <li><NavLink 
      className={({ isActive }) =>
       `hover:bg-transparent hover:border-b-2 bg-transparent font-bold text-base ${
-        isActive ? 'text-yellow-500' : ''
+        isActive ? 'text-purple-800' : ''
       }`}
      to='/services'>Services</NavLink></li>     
      {
       user && <li><NavLink
       className={({ isActive }) =>
         `hover:bg-transparent hover:border-b-2 bg-transparent font-bold text-base ${
-          isActive ? 'text-yellow-500' : ''
+          isActive ? 'text-purple-800' : ''
         }`}
       to='/add-service'>Add Service</NavLink></li>
      }    
@@ -43,7 +43,7 @@ const Navbar = () => {
       user && <li><NavLink 
       className={({ isActive }) =>
         `hover:bg-transparent hover:border-b-2 bg-transparent font-bold text-base ${
-          isActive ? 'text-yellow-500' : ''
+          isActive ? 'text-purple-800' : ''
         }`}
       to='/my-review'>My Reviews</NavLink></li>
      } 
@@ -51,7 +51,7 @@ const Navbar = () => {
       user && <li><NavLink 
       className={({ isActive }) =>
         `hover:bg-transparent hover:border-b-2 bg-transparent font-bold text-base ${
-          isActive ? 'text-yellow-500' : ''
+          isActive ? 'text-purple-800' : ''
         }`}
       to='/my-service'>My Service</NavLink></li>
      } 
@@ -87,7 +87,7 @@ const Navbar = () => {
           </div>
           <button onClick={handleLogOut} className="hidden lg:flex btn font-bold text-base bg-transparent hover:bg-transparent border-gray-300">Log out</button>
           </>:<>
-          <Link to='/login' className={`${location.pathname==='/login'? 'text-yellow-500': ''} btn font-bold text-base bg-transparent hover:bg-transparent`}>Login</Link>
+          <Link to='/login' className={`${location.pathname==='/login'? 'text-purple-800': ''} btn font-bold text-base bg-transparent hover:bg-transparent`}>Login</Link>
           </>
         }
         {/* responsive dropdown */}
