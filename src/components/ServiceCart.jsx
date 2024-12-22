@@ -1,8 +1,12 @@
+
 const ServiceCart = ({ service }) => {
   const { price, category, description, serviceTitle, serviceImage } = service || {};
 
   return (
-    <div className="card w-full max-w-md bg-white shadow-lg border border-gray-300 rounded-lg hover:shadow-xl transition-shadow duration-300">
+    <div 
+    animate={{ y: [0, 25, 0] }}
+    transition={{ duration: 4,  ease: "linear",}}
+    className="card w-full max-w-md bg-white shadow-lg border border-gray-300 rounded-lg hover:shadow-xl transition-shadow duration-300">
       <figure className="relative">
         <img
           src={serviceImage}

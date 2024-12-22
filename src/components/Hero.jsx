@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { Typewriter } from 'react-simple-typewriter';
-
+import { motion } from "motion/react"
 
 
 const Hero = () => {
@@ -62,7 +62,9 @@ const Hero = () => {
                 <button className=' btn rounded-xl bg-purple-800 text-white hover:bg-purple-800 mt-6 rounded-br-none font-bold text-lg'>See More</button>
               </div>
               <div className="w-full md:w-1/2">
-                <img
+                <motion.img
+                animate={{ y: [0, 25, 0] }}
+                transition={{ duration: 4,  ease: "linear", repeat: Infinity}}
                   src={item.img}
                   alt={item.title}
                   className="w-full md:h-[450px] rounded-md"
