@@ -45,7 +45,7 @@ const Navbar = () => {
         `hover:bg-transparent hover:border-b-2 bg-transparent font-bold text-base ${
           isActive ? 'text-yellow-500' : ''
         }`}
-      to='/my-reviews'>My Reviews</NavLink></li>
+      to='/my-review'>My Reviews</NavLink></li>
      } 
      {
       user && <li><NavLink 
