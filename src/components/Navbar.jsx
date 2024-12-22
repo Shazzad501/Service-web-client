@@ -85,7 +85,7 @@ const Navbar = () => {
             src={user && user?.photoURL} 
             alt="user img" />
           </div>
-          <button onClick={handleLogOut} className="hidden lg:flex btn font-bold text-base">Log out</button>
+          <button onClick={handleLogOut} className="hidden lg:flex btn font-bold text-base bg-transparent hover:bg-transparent border-gray-300">Log out</button>
           </>:<>
           <Link to='/login' className={`${location.pathname==='/login'? 'text-yellow-500': ''} btn font-bold text-base bg-transparent hover:bg-transparent`}>Login</Link>
           </>
