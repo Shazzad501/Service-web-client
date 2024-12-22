@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import { Typewriter } from 'react-simple-typewriter';
 
 
 
@@ -36,22 +37,35 @@ const Hero = () => {
     arrows: true,
   };
   return (
-    <div className='overflow-hidden'>
-       <div className="slider-container my-10">
+    <div className='overflow-hidden max-w-7xl mx-auto'>
+       <div className="slider-container my-5">
       <Slider {...settings}>
         {sliderData.map((item, index) => (
           <div key={index} className="flex items-center justify-center">
             <div className="flex flex-col md:flex-row items-center gap-5 bg-white rounded-lg shadow-md p-6">
               <div className="w-full md:w-1/2 text-center md:text-left">
-                <h3 className="text-3xl font-extrabold mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
-                <button className=' btn rounded-xl bg-purple-700 text-white hover:bg-purple-700 mt-6 rounded-br-none font-bold text-lg'>See More</button>
+              <h2 className='font-extrabold text-4xl text-purple-800'>Explore Our All Service</h2>
+                <h3 className="text-3xl font-extrabold mb-2 text-black">
+                <Typewriter
+                words={[
+                  `${item.title}`,
+                ]}
+                loop={true}
+                cursor
+                cursorStyle="_"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+              </h3>
+                <p className=" font-bold text-base text-gray-600">{item.description}</p>
+                <button className=' btn rounded-xl bg-purple-800 text-white hover:bg-purple-800 mt-6 rounded-br-none font-bold text-lg'>See More</button>
               </div>
               <div className="w-full md:w-1/2">
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="w-full h-[450px] rounded-md"
+                  className="w-full md:h-[450px] rounded-md"
                 />
               </div>
             </div>
