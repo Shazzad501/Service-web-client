@@ -20,7 +20,7 @@ const ServiceCart = ({ service }) => {
         </p>
         <div className="flex justify-between items-center mt-4">
           <p className="text-lg font-bold black">${price}</p>
-          <button className="btn text-black btn-sm border border-purple-800 hover:bg-purple-800 hover:text-white">
+          <button className="btn text-black btn-sm border border-purple-800 hover:bg-purple-800 hover:text-white bg-transparent">
             See Details
           </button>
         </div>

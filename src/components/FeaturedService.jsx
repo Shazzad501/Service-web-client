@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ServiceCart from './ServiceCart';
 import Loading from './Loading';
+import toast from 'react-hot-toast';
 
 const FeaturedService = () => {
   const [services, setServices] = useState([]);
@@ -14,7 +15,7 @@ const FeaturedService = () => {
         setServices(data.data);
       })
       .catch((error) => {
-        console.error("Error fetching services:", error);
+        toast.error("Error fetching services:", error);
       })
       .finally(() => {
         setLoading(false);
