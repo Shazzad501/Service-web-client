@@ -27,7 +27,7 @@ const ServiceDetails = () => {
     setLoading(false);
 
     // Fetch existing reviews from the server
-    axios.get(`http://localhost:5000/reviews?serviceId=${data.data._id}`)
+    axios.get(`http://localhost:5000/reviews/${data.data._id}`)
       .then((res) => setReviews(res.data))
       // .catch(() => toast.error("No reviews!"));
   }, [data]);
