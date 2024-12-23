@@ -12,6 +12,7 @@ import MyService from "../pages/MyService";
 import MyReview from "../pages/MyReview";
 import ServiceDetails from "../pages/ServiceDetails";
 import PrivateRoute from "./PrivateRoute";
+import axios from "axios";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'service/:id',
-        element: <PrivateRoute><ServiceDetails/></PrivateRoute>
+        element: <PrivateRoute><ServiceDetails/></PrivateRoute>,
+        loader: ({params})=> axios.get(`http://localhost:5000/services/${params.id}`)
       }
     ]
   },
