@@ -7,3 +7,12 @@
 html{
   font-family: "Afacad Flux", serif;
 }
+
+.react-rating .star {
+  font-size: 24px; /* Adjust size of stars */
+  color: #ffcc00; /* Yellow color for full stars */
+}
+
+.react-rating .empty-star {
+  color: #d3d3d3; /* Light grey color for empty stars */
+}
