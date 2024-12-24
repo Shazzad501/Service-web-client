@@ -1,8 +1,7 @@
-# React + Vite
+Live site link: https://service-review-5ac25.web.app/my-service
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project name: Service Provider
 
-Currently, two official plugins are available:
+"This is an amazing service provider website where you can access a variety of services. You can visit individual service pages, rate services, and even add, update, or delete your own services. Additionally, you can manage your posted reviews.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+These features are available exclusively for logged-in users. If you are not logged in, your experience will be limited. Non-logged-in users can only browse and read about the services."
