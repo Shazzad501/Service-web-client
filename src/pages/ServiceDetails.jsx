@@ -49,7 +49,9 @@ const ServiceDetails = () => {
       ...reviewData,
       userName: user.displayName,
       userPhoto: user.photoURL,
+      userEmail: user.email,
       serviceId: service._id,
+      serviceTitle: service.serviceTitle,
       date: new Date().toISOString().split('T')[0],
     };
 
