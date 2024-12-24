@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import ReactStars from 'react-rating-stars-component';
 import { Typewriter } from 'react-simple-typewriter';
 import '../index.css';
+import Loading from '../components/Loading';
 
 const ServiceDetails = () => {
   const { user } = React.useContext(AuthContext);
@@ -68,11 +69,7 @@ const ServiceDetails = () => {
   };
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="spinner">Loading...</div>
-      </div>
-    );
+    return <Loading></Loading>
   }
 
   return (
@@ -108,8 +105,8 @@ const ServiceDetails = () => {
           <p className="text-gray-600"><strong>Price:</strong> ${service.price}</p>
           <p className="text-gray-600"><strong>Description:</strong> {service.description}</p>
           <p className="text-gray-600"><strong>Added Date:</strong> {service.addedDate}</p>
-          <p className="text-gray-600"><strong>Website:</strong> {service.website}</p>
-          <p className="text-gray-600"><strong>Submitted By:</strong> {service.userEmail}</p>
+          <p className="text-gray-600"><strong>Website:</strong> <Link to={service.website} target='_blank' className='text-blue-600'>{service.website}</Link></p>
+          <p className="text-gray-600"><strong>Created By:</strong> {service.userEmail}</p>
           <p className="text-gray-600"><strong>Total Review:</strong> {reviews.length}</p>
           <button
             onClick={() => setShowModal(true)}

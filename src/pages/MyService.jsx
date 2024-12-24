@@ -6,6 +6,8 @@ import toast from 'react-hot-toast';
 import { Typewriter } from 'react-simple-typewriter';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import {  FaRegEdit } from 'react-icons/fa';
+import { FaDeleteLeft } from 'react-icons/fa6';
 
 const MyService = () => {
   const { user } = useContext(AuthContext);
@@ -149,15 +151,15 @@ const MyService = () => {
                   <div className="flex gap-2">
                     <button
                       onClick={() => setSelectedService(service)}
-                      className="btn btn-sm bg-green-600 hover:bg-green-600 text-white"
+                      className="btn btn-sm bg-blue-700 hover:bg-blue-600 text-white"
                     >
-                      Update
+                      <FaRegEdit/>Edit
                     </button>
                     <button
                       onClick={() => handleDelete(service._id)}
                       className="btn btn-sm bg-red-500 hover:bg-red-500 text-white"
                     >
-                      Delete
+                     <FaDeleteLeft/> Delete
                     </button>
                   </div>
                 </td>

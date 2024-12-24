@@ -5,20 +5,27 @@ import ReactStars from 'react-rating-stars-component';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../provider/AuthProvider';
 import { Typewriter } from 'react-simple-typewriter';
+import { FaRegEdit } from 'react-icons/fa';
+import { FaDeleteLeft } from 'react-icons/fa6';
+import Loading from '../components/Loading';
 
 
 const MyReview = () => {
   const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true)
   const [reviews, setReviews] = useState([]);
   const [selectedReview, setSelectedReview] = useState(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
   // Fetch user reviews
   useEffect(() => {
+    document.title = "My review"
     if (user?.email) {
       axios
         .get(`http://localhost:5000/reviews?email=${user.email}`)
-        .then((res) => setReviews(res.data))
+        .then((res) => {
+          setLoading(false)
+          setReviews(res.data)})
         .catch(() => toast.error("Failed to load reviews!"));
     }
   }, [user]);
@@ -71,6 +78,10 @@ const MyReview = () => {
     setSelectedReview({ ...selectedReview, [name]: value });
   };
 
+  if(loading){
+    return <Loading/>
+  }
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h2 className='font-bold text-2xl text-center text-purple-800'>
@@ -113,13 +124,13 @@ const MyReview = () => {
                   }}
                   className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
                 >
-                  Update
+                  <FaRegEdit/>
                 </button>
                 <button
                   onClick={() => handleDelete(review._id)}
                   className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
                 >
-                  Delete
+                 <FaDeleteLeft/>
                 </button>
               </div>
             </div>

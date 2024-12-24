@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../provider/AuthProvider';
 import toast from 'react-hot-toast';
@@ -64,9 +64,12 @@ const AddService = () => {
       });
   };
 
+  useEffect(()=>{
+    document.title = "Add Service"
+  }, [])
   return (
     <div>
-      <div className="bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 text-white py-12">
+      <div className="bg-gradient-to-r from-purple-800 via-purple-700 to-purple-800 text-white py-12">
         <div className="max-w-6xl mx-auto text-center px-5">
           <h1 className="text-4xl font-bold mb-4">Add Your New Service</h1>
           <p className="text-lg">

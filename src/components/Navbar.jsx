@@ -60,7 +60,7 @@ const Navbar = () => {
      } 
   </>
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-200">
       <div className="navbar-start">
         <Link to='/' className="btn font-bold text-xl bg-transparent hover:bg-transparent border-none">
           <img 
