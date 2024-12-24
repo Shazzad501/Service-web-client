@@ -47,25 +47,9 @@ const AuthProvider = ({children}) => {
   useEffect(()=>{
     const unSubscribe = onAuthStateChanged(auth, (currentUser)=>{
       setUser(currentUser);
-      setLoading(false)
-      // if(currentUser?.email){
-      //   const user = {email: currentUser.email}
-        
-      //   axios.post('https://job-server-nu.vercel.app/jwt', user, {withCredentials: true})
-      //   .then(res=>{
-      //     console.log(res.data)
-      //     setLoading(false)
-      //   })
-      // }
-      // else{
-      //   axios.post('https://job-server-nu.vercel.app/logout', {}, {withCredentials: true})
-      //   .then(res=> {
-      //     setLoading(false)
-      //     console.log("logOut", res.data)
-      // })
-      // }
-      
+      setLoading(false);
     })
+
     return()=>{
       unSubscribe();
     }

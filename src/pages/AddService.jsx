@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../provider/AuthProvider';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddService = () => {
   const { user } = useContext(AuthContext);
-
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     serviceImage: '',
     serviceTitle: '',
@@ -46,8 +47,9 @@ const AddService = () => {
     axios
       .post('http://localhost:5000/services', serviceData)
       .then((res) => {
-        if (res.insertedId) {
+        if (res.data.insertedId) {
           toast.success('Service added successfully!');
+          navigate('/my-service')
           setFormData({
             serviceImage: '',
             serviceTitle: '',
