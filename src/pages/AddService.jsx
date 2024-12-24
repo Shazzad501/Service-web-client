@@ -45,7 +45,7 @@ const AddService = () => {
     };
 
     axios
-      .post('http://localhost:5000/services', serviceData)
+      .post('https://service-review-server-navy.vercel.app/services', serviceData)
       .then((res) => {
         if (res.data.insertedId) {
           toast.success('Service added successfully!');

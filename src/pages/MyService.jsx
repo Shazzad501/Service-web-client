@@ -21,7 +21,7 @@ const MyService = () => {
   useEffect(() => {
     document.title = 'My Service || Service Reviewer';
     axios
-    .get(`http://localhost:5000/services?email=${user?.email}`)
+    .get(`https://service-review-server-navy.vercel.app/services?email=${user?.email}`)
     .then(res=>{
       setServices(res.data)
       setLoading(false)
@@ -46,7 +46,7 @@ const MyService = () => {
   const handleUpdateSubmit = (e) => {
     e.preventDefault();
     
-    axios.put(`http://localhost:5000/services/${selectedService._id}`, selectedService)
+    axios.put(`https://service-review-server-navy.vercel.app/services/${selectedService._id}`, selectedService)
       .then(() => {
         setServices(
           services.map((service) =>
@@ -72,7 +72,7 @@ const MyService = () => {
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/services/${id}`)
+        axios.delete(`https://service-review-server-navy.vercel.app/services/${id}`)
           .then(() => {
             setServices(services.filter((service) => service._id !== id));
             toast.success('Service deleted successfully!');

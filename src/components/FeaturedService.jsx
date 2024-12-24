@@ -10,7 +10,7 @@ const FeaturedService = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/limitService')
+      .get('https://service-review-server-navy.vercel.app/limitService')
       .then((data) => {
         setServices(data.data);
       })

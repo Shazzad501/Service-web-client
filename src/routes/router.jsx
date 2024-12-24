@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       {
         path: 'service/:id',
         element: <PrivateRoute><ServiceDetails/></PrivateRoute>,
-        loader: ({params})=> axios.get(`http://localhost:5000/services/${params.id}`)
+        loader: ({params})=> axios.get(`https://service-review-server-navy.vercel.app/services/${params.id}`)
       }
     ]
   },

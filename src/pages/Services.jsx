@@ -16,7 +16,7 @@ const Services = () => {
   useEffect(() => {
     document.title = "Services || Service Reviewer"
     axios
-      .get('http://localhost:5000/services')
+      .get('https://service-review-server-navy.vercel.app/services')
       .then((response) => {
         const data = response.data;
         setServices(data);

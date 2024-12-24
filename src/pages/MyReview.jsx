@@ -22,7 +22,7 @@ const MyReview = () => {
     document.title = "My review"
     if (user?.email) {
       axios
-        .get(`http://localhost:5000/reviews?email=${user.email}`)
+        .get(`https://service-review-server-navy.vercel.app/reviews?email=${user.email}`)
         .then((res) => {
           setLoading(false)
           setReviews(res.data)})
@@ -35,7 +35,7 @@ const MyReview = () => {
     e.preventDefault();
 
     axios
-      .put(`http://localhost:5000/reviews/${selectedReview._id}`, selectedReview)
+      .put(`https://service-review-server-navy.vercel.app/reviews/${selectedReview._id}`, selectedReview)
       .then(() => {
         toast.success("Review updated successfully!");
         setReviews((prev) =>
@@ -62,7 +62,7 @@ const MyReview = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/reviews/${id}`)
+          .delete(`https://service-review-server-navy.vercel.app/reviews/${id}`)
           .then(() => {
             toast.success("Review deleted successfully!");
             setReviews((prev) => prev.filter((review) => review._id !== id));

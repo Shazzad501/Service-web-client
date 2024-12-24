@@ -27,8 +27,7 @@ const ServiceDetails = () => {
     setService(data.data);
     setLoading(false);
 
-    // Fetch existing reviews from the server
-    axios.get(`http://localhost:5000/reviews/${data.data._id}`)
+    axios.get(`https://service-review-server-navy.vercel.app/reviews/${data.data._id}`)
       .then((res) => setReviews(res.data))
       // .catch(() => toast.error("No reviews!"));
   }, [data]);
@@ -56,7 +55,7 @@ const ServiceDetails = () => {
       date: new Date().toISOString().split('T')[0],
     };
 
-    axios.post('http://localhost:5000/reviews', review)
+    axios.post('https://service-review-server-navy.vercel.app/reviews', review)
       .then((res) => {
         if (res.data.insertedId) {
           toast.success("Review added successfully!");
