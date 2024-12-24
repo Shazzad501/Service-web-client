@@ -38,7 +38,15 @@ const Navbar = () => {
           isActive ? 'text-purple-800' : ''
         }`}
       to='/add-service'>Add Service</NavLink></li>
-     }    
+     } 
+      {
+      user && <li><NavLink 
+      className={({ isActive }) =>
+        `hover:bg-transparent hover:border-b-2 bg-transparent font-bold text-base ${
+          isActive ? 'text-purple-800' : ''
+        }`}
+      to='/my-service'>My Service</NavLink></li>
+     }   
      {
       user && <li><NavLink 
       className={({ isActive }) =>
@@ -46,15 +54,7 @@ const Navbar = () => {
           isActive ? 'text-purple-800' : ''
         }`}
       to='/my-review'>My Reviews</NavLink></li>
-     } 
-     {
-      user && <li><NavLink 
-      className={({ isActive }) =>
-        `hover:bg-transparent hover:border-b-2 bg-transparent font-bold text-base ${
-          isActive ? 'text-purple-800' : ''
-        }`}
-      to='/my-service'>My Service</NavLink></li>
-     } 
+     }  
      {
       user && <li><Link to='' onClick={handleLogOut} className="lg:hidden">Log out</Link></li>
      } 

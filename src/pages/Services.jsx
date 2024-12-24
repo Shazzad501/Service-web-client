@@ -6,19 +6,19 @@ import ServiceCart from '../components/ServiceCart';
 import { Typewriter } from 'react-simple-typewriter';
 
 const Services = () => {
-  const [services, setServices] = useState([]); // Original services data
-  const [filteredServices, setFilteredServices] = useState([]); // Filtered services for display
-  const [loading, setLoading] = useState(true); // Loading state
-  const [searchQuery, setSearchQuery] = useState(''); // Search query
+  const [services, setServices] = useState([]);
+  const [filteredServices, setFilteredServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState(''); 
 
-  // Fetch services from the API on component mount
+  // Fetch services from the API 
   useEffect(() => {
     axios
       .get('http://localhost:5000/services')
       .then((response) => {
         const data = response.data;
-        setServices(data); // Set original services
-        setFilteredServices(data); // Initialize filtered services
+        setServices(data);
+        setFilteredServices(data);
       })
       .catch((error) => {
         toast.error(`Error fetching services: ${error.message}`);
@@ -33,12 +33,12 @@ const Services = () => {
     e.preventDefault();
     const query = searchQuery.trim().toLowerCase();
     if (query === '') {
-      setFilteredServices(services); // Show all services if query is empty
+      setFilteredServices(services);
     } else {
       const filtered = services.filter((service) =>
-        service.category.toLowerCase().includes(query)
+        service.serviceTitle.toLowerCase().includes(query)
       );
-      setFilteredServices(filtered); // Update filtered services
+      setFilteredServices(filtered);
     }
   };
 
@@ -53,7 +53,7 @@ const Services = () => {
         <h2 className="text-3xl font-bold text-center">
         <Typewriter
                 words={[
-                  "Find a Service by Category",
+                  "Find a Service by Title",
                 ]}
                 loop={true}
                 cursor
