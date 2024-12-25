@@ -15,7 +15,14 @@ const MyService = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [selectedService, setSelectedService] = useState(null);
-  const categories = ['Web Development', 'Graphic Design', 'Consulting', 'Marketing'];
+  const categories = ['Delivery',
+    'Ride-Share',
+    'Home Services',
+    'Health & Wellness',
+    'Event Services',
+    'Professional Services',
+    'Education & Tutoring',
+    'Others'];
 
 
   useEffect(() => {
@@ -46,7 +53,7 @@ const MyService = () => {
   const handleUpdateSubmit = (e) => {
     e.preventDefault();
     
-    axios.put(`https://service-review-server-navy.vercel.app/services/${selectedService._id}`, selectedService)
+    axios.put(`https://service-review-server-navy.vercel.app/services/${selectedService._id}`, selectedService, {withCredentials: true})
       .then(() => {
         setServices(
           services.map((service) =>
@@ -72,7 +79,7 @@ const MyService = () => {
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`https://service-review-server-navy.vercel.app/services/${id}`)
+        axios.delete(`https://service-review-server-navy.vercel.app/services/${id}`, {withCredentials: true})
           .then(() => {
             setServices(services.filter((service) => service._id !== id));
             toast.success('Service deleted successfully!');

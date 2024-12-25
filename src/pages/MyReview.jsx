@@ -43,7 +43,7 @@ const MyReview = () => {
     e.preventDefault();
 
     axios
-      .put(`https://service-review-server-navy.vercel.app/reviews/${selectedReview._id}`, selectedReview)
+      .put(`https://service-review-server-navy.vercel.app/reviews/${selectedReview._id}`, selectedReview, {withCredentials: true})
       .then(() => {
         toast.success("Review updated successfully!");
         setReviews((prev) =>
@@ -70,7 +70,7 @@ const MyReview = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`https://service-review-server-navy.vercel.app/reviews/${id}`)
+          .delete(`https://service-review-server-navy.vercel.app/reviews/${id}`, {withCredentials: true})
           .then(() => {
             toast.success("Review deleted successfully!");
             setReviews((prev) => prev.filter((review) => review._id !== id));

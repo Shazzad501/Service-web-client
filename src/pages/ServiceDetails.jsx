@@ -64,7 +64,7 @@ const ServiceDetails = () => {
       date: new Date().toISOString().split('T')[0],
     };
 
-    axios.post('https://service-review-server-navy.vercel.app/reviews', review)
+    axios.post('https://service-review-server-navy.vercel.app/reviews', review, {withCredentials: true})
       .then((res) => {
         if (res.data.insertedId) {
           toast.success("Review added successfully!");
