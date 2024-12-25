@@ -7,6 +7,8 @@ import ReactStars from 'react-rating-stars-component';
 import { Typewriter } from 'react-simple-typewriter';
 import '../index.css';
 import Loading from '../components/Loading';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const ServiceDetails = () => {
   const { user } = React.useContext(AuthContext);
@@ -31,6 +33,13 @@ const ServiceDetails = () => {
       .then((res) => setReviews(res.data))
       // .catch(() => toast.error("No reviews!"));
   }, [data]);
+
+  useEffect(() => {
+    // Initialize AOS animation
+    AOS.init({
+      duration: 1500,
+    });
+  }, []);
 
   // Handle changes in the review form
   const handleReviewChange = (e) => {
@@ -109,7 +118,7 @@ const ServiceDetails = () => {
           <p className="text-gray-600"><strong>Total Review:</strong> {reviews.length}</p>
           <button
             onClick={() => setShowModal(true)}
-            className="mt-6 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+            className="mt-6 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 rounded-br-none"
           >
             Add Review
           </button>
@@ -122,7 +131,7 @@ const ServiceDetails = () => {
         {reviews.length > 0 ? (
           <div className="space-y-4">
             {reviews.map((review, index) => (
-              <div key={index} className="bg-gray-100 p-4 rounded-lg shadow-md flex items-start gap-4">
+              <div data-aos='zoom-in' key={index} className="bg-gray-100 p-4 rounded-lg shadow-md flex items-start gap-4">
                 <img
                   src={review.userPhoto}
                   alt={review.userName}
@@ -151,7 +160,7 @@ const ServiceDetails = () => {
       {/* Add Review Modal */}
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md sm:max-w-sm">
+          <div data-aos='zoom-in' className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md sm:max-w-sm">
             <h2 className="text-xl font-bold mb-4">
               <Typewriter
                 words={[`Add Review for ${service.serviceTitle}`]}

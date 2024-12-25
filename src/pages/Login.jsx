@@ -9,6 +9,8 @@ import { AuthContext } from '../provider/AuthProvider';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
 // import axios from 'axios';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Login = () => {
   const {setUser, loginUser, createUserWithGoogle, setLoading} = useContext(AuthContext)
@@ -80,13 +82,20 @@ const Login = () => {
     }
   }
 
+  useEffect(() => {
+    // Initialize AOS animation
+    AOS.init({
+      duration: 1500,
+    });
+  }, []);
+
   useEffect(()=>{
     // dynamic title
-    // document.title="Login || Job Portal"
+    document.title="Login || Sevice Review"
   }, [])
   return (
     <div className="flex items-center justify-center min-h-screen py-6">
-        <div  className="card bg-base-100 w-full max-w-md py-16 px-5 shrink-0 rounded-md  border-2">
+        <div data-aos='zoom-in' className="card bg-base-100 w-full max-w-md py-16 px-5 shrink-0 rounded-md  border-2">
           <h2 className="font-bold text-xl text-center ">
           <Typewriter
                 words={[

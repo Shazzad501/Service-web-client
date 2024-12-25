@@ -1,12 +1,19 @@
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const ServiceCart = ({ service }) => {
   const { _id, price, category, description, serviceTitle, serviceImage } = service || {};
 
+  useEffect(() => {
+    // Initialize AOS animation
+    AOS.init({
+      duration: 1500,
+    });
+  }, []);
   return (
-    <div 
-    animate={{ y: [0, 25, 0] }}
-    transition={{ duration: 4,  ease: "linear",}}
+    <div data-aos="zoom-in"
     className="card w-full max-w-md bg-white shadow-lg border border-gray-300 rounded-lg hover:shadow-xl transition-shadow duration-300">
       <figure className="relative">
         <img
@@ -25,7 +32,7 @@ const ServiceCart = ({ service }) => {
         </p>
         <div className="flex justify-between items-center mt-4">
           <p className="text-lg font-bold black">${price}</p>
-          <Link to={`/service/${_id}`} className="btn text-black btn-sm border border-purple-800 hover:bg-purple-800 hover:text-white bg-transparent">
+          <Link to={`/service/${_id}`} className="btn text-black btn-sm rounded-br-none border border-purple-800 hover:bg-purple-800 hover:text-white bg-transparent">
             See Details
           </Link>
         </div>

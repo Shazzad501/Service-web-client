@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const partners = [
   {
@@ -24,6 +26,13 @@ const partners = [
 ];
 
 const MeetOurPartners = () => {
+
+  useEffect(() => {
+    // Initialize AOS animation
+    AOS.init({
+      duration: 1500,
+    });
+  }, []);
   return (
     <section className="py-16 bg-base-200" id="partners">
       <div className="container mx-auto px-4 text-center">
@@ -34,7 +43,7 @@ const MeetOurPartners = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {partners.map((partner, index) => (
-            <div
+            <div data-aos='fade-up'
               key={index}
               className="bg-white shadow-md rounded-lg overflow-hidden p-6 flex flex-col items-center hover:shadow-lg transition-shadow duration-300"
             >

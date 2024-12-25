@@ -8,7 +8,8 @@ import { Typewriter } from 'react-simple-typewriter';
 import { FaRegEdit } from 'react-icons/fa';
 import { FaDeleteLeft } from 'react-icons/fa6';
 import Loading from '../components/Loading';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const MyReview = () => {
   const { user } = useContext(AuthContext);
@@ -29,6 +30,13 @@ const MyReview = () => {
         .catch(() => toast.error("Failed to load reviews!"));
     }
   }, [user]);
+
+  useEffect(() => {
+    // Initialize AOS animation
+    AOS.init({
+      duration: 1500,
+    });
+  }, []);
 
   // Handle review update
   const handleUpdateSubmit = (e) => {
@@ -101,6 +109,7 @@ const MyReview = () => {
         <div className="space-y-4">
           {reviews.map((review) => (
             <div
+            data-aos='zoom-in'
               key={review._id}
               className="bg-white shadow-md p-4 rounded-lg flex flex-col md:flex-row justify-between items-center"
             >
@@ -143,7 +152,7 @@ const MyReview = () => {
       {/* Update Modal */}
       {showUpdateModal && selectedReview && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+          <div data-aos='zoom-in' className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
             <h2 className="text-xl font-bold mb-4">
             <Typewriter
                 words={[

@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Lottie from "react-lottie-player";
 import emailjs from "emailjs-com";
 import contactLotti from "../assets/contact-lotti.json";
 import toast from "react-hot-toast";
-import { AuthContext } from "../provider/AuthProvider";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // email sender info
 const SERVICE = import.meta.env.VITE_SERVICE_ID;
@@ -11,7 +12,6 @@ const TEMPLATED = import.meta.env.VITE_TEMPLATE_ID;
 const PUBLIC = import.meta.env.VITE_PUBLIC_KEY;
 
 const Contact = () => {
-  const {user} = useContext(AuthContext);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -52,7 +52,12 @@ const Contact = () => {
       );
   };
   
-
+  useEffect(() => {
+    // Initialize AOS animation
+    AOS.init({
+      duration: 1500,
+    });
+  }, []);
   return (
     <div>
 
@@ -60,7 +65,7 @@ const Contact = () => {
         <h2 className="font-bold text-4xl text-center mb-10">Contact With Us</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Form Section */}
-          <div className="px-10 shadow-md py-10 rounded-lg">
+          <div data-aos='fade-up' className="px-10 shadow-md py-10 rounded-lg">
             <form onSubmit={handleContact} className="flex flex-col gap-4 text-black">
               <div className="flex flex-col gap-2">
                 <label className="font-bold text-xl">Name</label>
@@ -111,7 +116,7 @@ const Contact = () => {
           </div>
 
           {/* Lottie Animation Section */}
-          <div>
+          <div data-aos='zoom-in'>
             <Lottie
               loop
               animationData={contactLotti}

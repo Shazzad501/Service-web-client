@@ -6,6 +6,8 @@ import { Typewriter } from 'react-simple-typewriter';
 import { AuthContext } from '../provider/AuthProvider';
 import Lottie from 'react-lottie-player';
 import registerLotti from "../assets/registerLotti.json"; 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Register = () => {
   const {newUserSet, setUser, upDateProfile, setLoading} = useContext(AuthContext);
@@ -57,15 +59,21 @@ const Register = () => {
     })
     .catch(err => setError(`${err.message}`))
   }
+  useEffect(() => {
+    // Initialize AOS animation
+    AOS.init({
+      duration: 1500,
+    });
+  }, []);
 
   useEffect(()=>{
     // dynamic title
-    // document.title="Register || Job Portal"
+    document.title="Register || Service Reviewer"
 
   }, [])
   return (
     <div className="flex items-center justify-center min-h-screen py-6">
-    <div className="card bg-base-100 w-full max-w-md py-12 px-5 shrink-0 rounded-md border-2">
+    <div data-aos='zoom-in' className="card bg-base-100 w-full max-w-md py-12 px-5 shrink-0 rounded-md border-2">
       <h2 className="font-bold text-xl text-center">
       <Typewriter
                 words={[
