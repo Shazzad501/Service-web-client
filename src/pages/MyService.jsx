@@ -24,13 +24,14 @@ const MyService = () => {
     'Education & Tutoring',
     'Others'];
 
-
   useEffect(() => {
     document.title = 'My Service || Service Reviewer';
     axios
-    .get(`https://service-review-server-navy.vercel.app/services?email=${user?.email}`)
+    .get(`https://service-review-server-navy.vercel.app/services`)
     .then(res=>{
-      setServices(res.data)
+      const services = res.data;
+      const filterdService = services.filter(service=> service.userEmail === user.email)
+      setServices(filterdService)
       setLoading(false)
     })
     .catch(err =>{
