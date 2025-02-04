@@ -1,5 +1,7 @@
 # Service Provider Platform
 
+Live site: https://service-review-5ac25.web.app/
+
 ## 📌 Introduction
 
 The **Service Provider Platform** is an interactive web application where users can explore a variety of services, rate them, and manage their reviews. Users can also add, update, or delete their own services, offering a dynamic and user-driven experience.
