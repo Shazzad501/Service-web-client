@@ -24,13 +24,22 @@ const Navbar = () => {
               `hover:bg-transparent hover:border-b-2 bg-transparent font-bold text-base ${
                 isActive ? 'text-purple-800' : ''
               }`}
-      to='/'>Home</NavLink></li>     
+      to='/'>Home</NavLink></li> 
+
      <li><NavLink 
      className={({ isActive }) =>
       `hover:bg-transparent hover:border-b-2 bg-transparent font-bold text-base ${
         isActive ? 'text-purple-800' : ''
       }`}
-     to='/services'>Services</NavLink></li>     
+     to='/services'>Services</NavLink></li>
+
+      <li><NavLink 
+     className={({ isActive }) =>
+      `hover:bg-transparent hover:border-b-2 bg-transparent font-bold text-base ${
+        isActive ? 'text-purple-800' : ''
+      }`}
+     to='/contact-us'>Contact Us</NavLink></li>
+
      {
       user && <li><NavLink
       className={({ isActive }) =>

@@ -3,7 +3,6 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import FeaturedService from '../components/FeaturedService';
 import MeetOurPartners from '../components/MeetOurPartners';
-import Contact from '../components/Contact';
 
 const Home = () => {
   useEffect(()=>{
@@ -15,7 +14,6 @@ const Home = () => {
       <About/>
       <FeaturedService/>
       <MeetOurPartners/>
-      <Contact/>
     </div>
   );
 };

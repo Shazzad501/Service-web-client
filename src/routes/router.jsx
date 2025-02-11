@@ -13,6 +13,7 @@ import MyReview from "../pages/MyReview";
 import ServiceDetails from "../pages/ServiceDetails";
 import PrivateRoute from "./PrivateRoute";
 import axios from "axios";
+import Contact from "../pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'services',
         element: <Services/>
+      },
+      {
+        path: 'contact-us',
+        element: <Contact/>
       },
       {
         path: 'add-service',
