@@ -1,173 +1,180 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
-import { Typewriter } from 'react-simple-typewriter';
-import loginLotti from "../assets/login.json"; 
-import Lottie from 'react-lottie-player';
-import { AuthContext } from '../provider/AuthProvider';
-import { sendPasswordResetEmail } from 'firebase/auth';
-import auth from '../firebase/firebase.config';
-// import axios from 'axios';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import Lottie from "react-lottie-player";
+import loginLotti from "../assets/login.json";
+import { AuthContext } from "../provider/AuthProvider";
+import { sendPasswordResetEmail } from "firebase/auth";
+import auth from "../firebase/firebase.config";
+import { Typewriter } from "react-simple-typewriter";
 
 const Login = () => {
-  const {setUser, loginUser, createUserWithGoogle, setLoading} = useContext(AuthContext)
-  const navigate = useNavigate()
-  // eye pass show stat
-  const [showPass, setShowPass] = useState(false)
-  const emailRef = useRef()
-  const location = useLocation()
-  const [error, setError]=useState("")
+  const { setUser, loginUser, createUserWithGoogle, setLoading } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [showPass, setShowPass] = useState(false);
+  const emailRef = useRef();
+  const [error, setError] = useState("");
 
-  // redirect path
-  const redirectPath = location?.state?.from?.pathname || '/';
+  // Redirect path
+  const redirectPath = location?.state?.from?.pathname || "/";
 
+  useEffect(() => {
+    document.title = "Login || Service Provider";
+  }, []);
 
-  // handle login
-  const handleLogin=(e)=>{
+  // Handle login
+  const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    
-    // state resate
-    setError('')
 
-      loginUser(email, password)
-      .then(res=>{
+    setError("");
+
+    loginUser(email, password)
+      .then((res) => {
         setUser(res.user);
-        toast.success("Login Success!!")
-        navigate(redirectPath)
-        // Reset the form fields after successful login
+        toast.success("Login Successful!");
+        navigate(redirectPath);
         e.target.reset();
         setLoading(false);
       })
-      .catch(err=>{
-        setError(`${err.message}!!`)
-      })
-    
-  }
+      .catch((err) => {
+        setError(`${err.message}`);
+      });
+  };
 
-  // handle google login function
-  const handleGoogleLogin=()=>{
+  // Handle Google login
+  const handleGoogleLogin = () => {
     createUserWithGoogle()
-    .then(res=>{
-      setUser(res.user);
-      toast.success("Login Success!!")
-      navigate(redirectPath)
-      setLoading(false)
-    })
-    .catch(err=> toast.error(`${err.message}`))
-  }
+      .then((res) => {
+        setUser(res.user);
+        toast.success("Login Successful!");
+        navigate(redirectPath);
+        setLoading(false);
+      })
+      .catch((err) => toast.error(err.message));
+  };
 
-  // handle forget password
-  const handleForgotPassword=()=>{
+  // Handle Forgot Password
+  const handleForgotPassword = () => {
     const email = emailRef.current.value;
-    // error state reset
-    setError("")
+    setError("");
 
-    if(!email){
-      setError("Please enter a valid email")
-    }
-    else{
+    if (!email) {
+      setError("Please enter your email!");
+    } else {
       sendPasswordResetEmail(auth, email)
-      .then(()=>{
-        toast.success("Sent a mail for your mail box!")
-        window.open("https://mail.google.com/", "_blank")
-      })
-      .catch(err=>{
-        setError(`${err.message}`)
-      })
+        .then(() => {
+          toast.success("Reset email sent! Check your inbox.");
+          window.open("https://mail.google.com/", "_blank");
+        })
+        .catch((err) => setError(err.message));
     }
-  }
+  };
 
-  useEffect(() => {
-    document.title = "Login || Service Provider"
-    // Initialize AOS animation
-    AOS.init({
-      duration: 1500,
-    });
-  }, []);
-
-  useEffect(()=>{
-    // dynamic title
-    document.title="Login || Sevice Review"
-  }, [])
   return (
-    <div className="flex items-center justify-center min-h-screen py-6">
-        <div data-aos='zoom-in' className="card bg-base-100 w-full max-w-md py-16 px-5 shrink-0 rounded-md  border-2">
-          <h2 className="font-bold text-xl text-center ">
-          <Typewriter
-                words={[
-                  "Login your account",
-                ]}
-                loop={true}
-                cursor
-                cursorStyle="_"
-                typeSpeed={70}
-                deleteSpeed={50}
-                delaySpeed={1000}
-              />
-          </h2>
-          <div className='flex justify-center -mb-10'>
-            <Lottie
-            loop
-            animationData={loginLotti}
-            play
-            className="w-28 h-28"
-            />
-          </div>
-          <form onSubmit={handleLogin} className="card-body">
-            {/* Email filed */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-semibold text-base">Email Address</span>
-              </label>
-              <input 
-              ref={emailRef}
-              name="email"
-              type="email" 
-              placeholder="demo.mail@gamil.com" 
-              className="input input-bordered" required />
-            </div>
-            {/* Email filed */}
-
-            {/* password filed */}
-            <div className="form-control relative">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label> 
-              <input 
-              type={showPass ? 'text' : 'password'}
-              name='password' 
-              placeholder="password" 
-              className="input input-bordered" required />
-              <button onClick={()=>setShowPass(!showPass)} className='btn btn-xs absolute right-2 top-12'>{showPass ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}</button>
-              <label className="label">
-                <Link to='' onClick={handleForgotPassword} className="label-text-alt link link-hover">Forgot password?</Link>
-              </label>
-            </div>
-            {/* password filed */}
-
-            <div>
-              {
-                error &&  <label className="label">
-                <span className="label-text text-red-600">{error}</span>
-              </label> 
-              }
-            </div>
-
-            <div className="form-control mt-6">
-              {/* <button className="btn bg-[#073B4c] font-bold text-base text-white hover:bg-[#073B4c]">Login</button> */}
-
-              <input  type="submit" value="Login" className="btn bg-gradient-to-tr from-blue-600 to-blue-800 font-bold text-base text-white hover:bg-gradient-to-tl "/>
-
-              <button onClick={handleGoogleLogin} className="btn mt-6 bg-gradient-to-tl from-blue-600 to-blue-800 hover:bg-gradient-to-tr font-bold text-base text-white"><FaGoogle></FaGoogle>Login with Google</button>
-            </div>
-          </form>
-          <p className='font-semibold text-sm text-center'>Don't Have An Account? <Link to='/register' className='font-semibold text-sm text-red-600 underline'>Register</Link></p>
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
+        {/* Left Side - Lottie Animation */}
+        <div className="md:w-1/2 flex items-center justify-center p-6">
+          <Lottie loop animationData={loginLotti} play className="w-80 h-80" />
         </div>
+
+        {/* Right Side - Login Form */}
+        <div className="md:w-1/2 p-8">
+          <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
+          <Typewriter
+              words={[
+                "Welcome Back",
+                "Login and Continue"
+              ]}
+              loop={true}
+              cursor
+              cursorStyle="_"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+          />
+
+          </h2>
+
+          {/* Login Form */}
+          <form onSubmit={handleLogin}>
+            {/* Email */}
+            <div className="mb-4">
+              <label className="block text-gray-700 font-medium">Email Address</label>
+              <input
+                ref={emailRef}
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                required
+              />
+            </div>
+
+            {/* Password */}
+            <div className="mb-4 relative">
+              <label className="block text-gray-700 font-medium">Password</label>
+              <input
+                type={showPass ? "text" : "password"}
+                name="password"
+                placeholder="Enter your password"
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPass(!showPass)}
+                className="absolute right-4 top-10 text-gray-500"
+              >
+                {showPass ? <FaEyeSlash /> : <FaEye />}
+              </button>
+              <div className="text-right mt-2">
+                <button onClick={handleForgotPassword} className="text-blue-600 hover:underline text-sm">
+                  Forgot Password?
+                </button>
+              </div>
+            </div>
+
+            {/* Error Message */}
+            {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+
+            {/* Login Button */}
+            <button
+              type="submit"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition duration-300"
+            >
+              Login
+            </button>
+          </form>
+
+          {/* OR Divider */}
+          <div className="flex items-center my-6">
+            <hr className="w-full border-gray-300" />
+            <span className="px-4 text-gray-500">OR</span>
+            <hr className="w-full border-gray-300" />
+          </div>
+
+          {/* Google Login */}
+          <button
+            onClick={handleGoogleLogin}
+            className="w-full flex items-center justify-center bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-lg transition duration-300"
+          >
+            <FaGoogle className="mr-2" /> Sign in with Google
+          </button>
+
+          {/* Register Link */}
+          <p className="text-center text-gray-600 mt-4">
+            Don't have an account?{" "}
+            <Link to="/register" className="text-blue-600 hover:underline">
+              Register
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
