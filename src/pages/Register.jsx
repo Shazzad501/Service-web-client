@@ -68,7 +68,7 @@ const Register = () => {
 
   useEffect(()=>{
     // dynamic title
-    document.title="Register || Service Reviewer"
+    document.title="Register || Service Providerer"
 
   }, [])
   return (

@@ -25,7 +25,7 @@ const MyService = () => {
     'Others'];
 
   useEffect(() => {
-    document.title = 'My Service || Service Reviewer';
+    document.title = 'My Service || Service Providerer';
     axios
     .get(`https://service-review-server-navy.vercel.app/services`)
     .then(res=>{

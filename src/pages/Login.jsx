@@ -83,6 +83,7 @@ const Login = () => {
   }
 
   useEffect(() => {
+    document.title = "Login || Service Provider"
     // Initialize AOS animation
     AOS.init({
       duration: 1500,

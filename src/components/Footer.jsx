@@ -12,7 +12,7 @@ const Footer = () => {
     className='w-24 h-12'
     src={logo} alt="Logo" />
     <p className='font-bold text-xl'>
-      Service Reviewer Ltd.
+      Service Providerer Ltd.
     </p>
     <p className='font-bold text-sm'>
       Copyright © {new Date().getFullYear()} - All right reserved by Maruf</p>

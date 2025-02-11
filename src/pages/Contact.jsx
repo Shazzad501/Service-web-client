@@ -53,6 +53,7 @@ const Contact = () => {
   };
   
   useEffect(() => {
+    document.title= "Contact Us || Service Provider"
     // Initialize AOS animation
     AOS.init({
       duration: 1500,

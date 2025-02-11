@@ -6,7 +6,7 @@ import MeetOurPartners from '../components/MeetOurPartners';
 
 const Home = () => {
   useEffect(()=>{
-    document.title= "Service Review"
+    document.title= "Service Provider"
   }, [])
   return (
     <div>

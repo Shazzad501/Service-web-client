@@ -14,7 +14,7 @@ const Services = () => {
 
   // Fetch services from the API
   useEffect(() => {
-    document.title = "Services || Service Reviewer"
+    document.title = "Services || Service Providerer"
     axios
       .get('https://service-review-server-navy.vercel.app/services')
       .then((response) => {
