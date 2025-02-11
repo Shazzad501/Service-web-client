@@ -94,9 +94,9 @@ const Navbar = () => {
             src={user && user?.photoURL} 
             alt="user img" />
           </div>
-          <button onClick={handleLogOut} className="hidden lg:flex btn font-bold -mr-2 text-base bg-transparent hover:bg-transparent border-gray-300">Log out</button>
+          <button onClick={handleLogOut} className="hidden lg:flex btn font-bold -mr-2 text-base bg-transparent hover:bg-transparent border-gray-300 rounded-br-none">Log out</button>
           </>:<>
-          <Link to='/login' className={`${location.pathname==='/login'? 'text-purple-800': ''} btn font-bold text-base bg-transparent -mr-2 hover:bg-transparent`}>Login</Link>
+          <Link to='/login' className={`${location.pathname==='/login'? 'text-purple-800': ''} btn font-bold text-base bg-transparent -mr-2 hover:bg-transparent rounded-br-none`}>Login</Link>
           </>
         }
         {/* responsive dropdown */}

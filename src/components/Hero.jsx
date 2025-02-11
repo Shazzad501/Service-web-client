@@ -6,6 +6,7 @@ import { Typewriter } from 'react-simple-typewriter';
 import { motion } from "motion/react"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-router-dom';
 
 
 const Hero = () => {
@@ -68,7 +69,7 @@ const Hero = () => {
               />
               </h3>
                 <p className=" font-bold text-base text-gray-600">{item.description}</p>
-                <button className=' btn rounded-xl bg-purple-800 text-white hover:bg-purple-800 mt-6 rounded-br-none font-bold text-lg'>See More</button>
+                <Link to={'/services'} className=' btn rounded-xl bg-purple-800 text-white hover:bg-purple-800 mt-6 rounded-br-none font-bold text-lg'>See More</Link>
               </div>
               <div className="w-full md:w-1/2">
                 <motion.img
