@@ -106,7 +106,7 @@ const MyReview = () => {
               />
       </h2>
       {reviews.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {reviews.map((review) => (
             <div
             data-aos='zoom-in'

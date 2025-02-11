@@ -71,9 +71,9 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-200 max-w-7xl mx-auto px-5">
       <div className="navbar-start">
-        <Link to='/' className="btn font-bold text-xl bg-transparent hover:bg-transparent border-none">
+        <Link to='/' className=" font-bold text-xl bg-transparent hover:bg-transparent border-none">
           <img 
-          className='w-20 h-10'
+          className='w-24 h-10 -ml-4'
           src={logo} 
           alt="" />
         </Link>
