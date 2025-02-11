@@ -76,9 +76,9 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
+      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden flex flex-col-reverse md:flex-row">
         {/* Left Side - Lottie Animation */}
-        <div className="md:w-1/2 flex items-center justify-center p-6">
+        <div className="md:w-1/2 flex items-center justify-center md:p-6">
           <Lottie loop animationData={loginLotti} play className="w-80 h-80" />
         </div>
 
