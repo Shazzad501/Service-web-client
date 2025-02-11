@@ -139,7 +139,7 @@ const MyService = () => {
               <th>Title</th>
               <th>Category</th>
               <th>Price</th>
-              <th>Actions</th>
+              <th className='text-end'>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -156,7 +156,7 @@ const MyService = () => {
                 <td>{service.category}</td>
                 <td>${service.price}</td>
                 <td>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 justify-end">
                     <button
                       onClick={() => setSelectedService(service)}
                       className="btn btn-sm bg-blue-700 hover:bg-blue-600 text-white"
