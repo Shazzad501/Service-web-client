@@ -91,7 +91,7 @@ const MyReview = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-7xl mx-auto px-5 py-8">
       <h2 className='font-bold text-2xl text-center text-purple-800'>
       <Typewriter
                 words={[
@@ -106,7 +106,7 @@ const MyReview = () => {
               />
       </h2>
       {reviews.length > 0 ? (
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {reviews.map((review) => (
             <div
             data-aos='zoom-in'
